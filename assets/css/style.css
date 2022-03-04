@@ -1,10 +1,14 @@
-
+/* Imports */
+@import url('https://fonts.googleapis.com/css2?family=Holtwood+One+SC&family=Montserrat:wght@300&family=Raleway:wght@300&display=swap');
 
 /*Variables*/
 
 :root {
     --principal: #fff;
     --secondary: #000000;
+    --backcolor1: rgba(0, 0, 0, 0.884);
+    --font1: 'Montserrat', sans-serif;
+    --font2: 'Holtwood One SC', serif;
 }
 
 /* Normalize */
@@ -21,6 +25,8 @@ html{
     scroll-behavior: smooth;
     font-size: 62.5%;
     color: var(--principal);
+    /* font-family: 'Holtwood One SC', serif; */
+    font-family: var(--font1)
 }
 
 body { 
@@ -54,6 +60,10 @@ a {
     max-width: 1080px;
     margin: 0 auto;
 }
+.grid {
+    display: grid;
+}
+
 
 img {
     width: 100%;
@@ -62,7 +72,7 @@ img {
 /*Navbar y Header*/
 
 Header {
-    background-color: rgba(0, 0, 0, 0.884);
+    background-color: var(--backcolor1);
 }
 header .navbar {
     min-height: 5vh;
@@ -105,6 +115,7 @@ header .section {
 
 .navbar .section .sectionItem:hover .subMenu {
     display: block;
+    z-index: 1;
 }
 
 .sectionItem .subMenu .subMenuLink {
@@ -120,7 +131,9 @@ header .section {
 } 
 
 /* Inicio */
-
+main {
+    background-color: #000000da;
+}
 .usPage {
     align-items: center;
     position: relative; 
@@ -137,7 +150,7 @@ header .section {
 .bgImg {
     width: 80vh;
     height: 80vh;
-    opacity: 0.5;  
+    opacity: 0.3;  
     display: block;
 }
 
@@ -148,7 +161,7 @@ header .section {
 }
 
 .homeCn h1 {
-    font-size: 25em;    
+    font-size: 15em;    
     /* position: absolute; */
     top: 0; 
     /* left: 15vw;   */
@@ -156,12 +169,14 @@ header .section {
     top: 50%; 
     left: 50%;
     transform: translate(-50%,-50%);
-    color: var(--secondary);
+    color: var(--principal);
     animation-name: efectocn;
     animation-iteration-count: 5;
     animation-timing-function: ease-in-out;
     animation-duration: 2s;
     animation-delay: 2s;
+    font-family: var(--font2);
+    font-weight: lighter;
 }
 
 @keyframes efectocn {
@@ -206,10 +221,25 @@ footer {
     height: 10vh;
     align-items: center;
     justify-content: center;
+    background-color: var(--backcolor1);
 }
 
 footer p {
     text-align: center;
-    font-size: 1.4em;
-    color: var(--secondary);
+    font-size: 2em;   
+}
+
+/* Productos */
+
+.galleryProduct {
+    align-content: center;
+    grid-template-columns: repeat(6, 1fr);
+    grid-gap: 10px;
+    grid-template-rows: 3;
+}
+
+.galleryProduct img {
+    justify-content: space-between;
+    max-width: 25vw;
+    align-content: center;
 }
