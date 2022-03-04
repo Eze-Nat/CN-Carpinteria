@@ -9,39 +9,58 @@
     <link rel="stylesheet" href="/assets/css/style.css">
 </head>
 
-<body id="page" class="grid">
-    <nav id="sidebar" class="sidebarNav container grid">
-        <div class="sideContent">
-            <div class="logo container">
-                <img class="logoImg" src="./assets/img/cn-blanco.png" alt="Logo CN Carpinteria">
-            </div>
-            <div class="sections container">
-                <ul>
-                    <li class="sectionItems"><a class="sideLink" href="">Inicio</a>
-                    </li>
-                    <li class="sectionItems"><a class="sideLink" href="">Productos</a>
-                        <!--                     <ul>
-                        <li class="sectionSubItems"><a href="">Cocina/Comedor</a></li>
-                        <li class="sectionSubItems"><a href="">Living</a></li>
-                        <li class="sectionSubItems"><a href="">Habitación</a></li>
-                        <li class="sectionSubItems"><a href="">Oficina</a></li>
-                        <li class="sectionSubItems"><a href="">Varios</a></li>
-                    </ul> -->
-                    </li>
-                    <li class="sectionItems"><a class="sideLink" href="">Presupuestos</a>
-                    </li>
-                    <li class="sectionItems"><a class="sideLink" href="">Contacto</a>
-                    </li>
-                </ul>
-            </div>
+<body>
+    <header>
+        <nav class="navbar container flexRow">
+            <picture class="logo">
+                <img src="./assets/img/cn-blanco.png" alt="Logo CN Carpinteria">
+            </picture>
+            <ul class="section flexRow">
+                <li class="sectionItem">
+                    <a class="sectionLink" href="">Inicio</a>
+                </li>
+                <li class="sectionItem">
+                    <a class="sectionLink" href="">Productos</a>
+                    <ul class="subMenu">
+                        <li class="subMenuItem">
+                            <a href="" class="subMenuLink">Cocina</a>
+                        </li>
+                        <li class="subMenuItem">
+                            <a href="" class="subMenuLink">Baño</a>
+                        </li>
+                        <li class="subMenuItem">
+                            <a href="" class="subMenuLink">Living/Comedor</a>
+                        </li>
+                        <li class="subMenuItem">
+                            <a href="" class="subMenuLink">Patio</a>
+                        </li>
+                        <li class="subMenuItem">
+                            <a href="" class="subMenuLink">Habitación</a>
+                        </li>
+                        <li class="subMenuItem">
+                            <a href="" class="subMenuLink">Varios</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="sectionItem">
+                    <a class="sectionLink" href="">Presupuestos</a>
+                </li>
+                <li class="sectionItem">
+                    <a class="sectionLink" href="">Contacto</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main class="usPage flexColumn">
+        <picture class="bgInicio">
+            <img class="bgImg"  src="./assets/img/Completo-negro.png" alt="Fondo CN Carpinteria">
+        </picture>
+        <div class="homeCn">
+            <h1>Capeletti  Natale</h1>
         </div>
-    </nav>
-    <main class="usPage grid container">
-        <img src="./assets/img/Completo-negro.png" alt="Fondo CN Carpinteria">
-        <h1 class="grid">Capeletti - Natale</h1>
     </main>
-    <footer class="grid container">
-        <p class="grid">Realizamos todo tipo de muebles a medida. Pedi tu cotización sin cargo.</p>
+    <footer class="flexRow">
+        <p>Realizamos todo tipo de muebles a medida. Pedi tu cotización sin cargo.</p>
     </footer>
 </body>
 
