@@ -1,26 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cn Carpinteria</title>
+    <title>CN Carpinteria - Presupuestos</title>
     <link rel="stylesheet" href="/assets/css/style.css">
 </head>
-
 <body>
     <header>
         <nav class="navbar container flexRow">
             <picture class="logo">
-                <img src="./assets/img/cn-blanco.png" alt="Logo CN Carpinteria">
+                <img src="/assets/img/cn-blanco.png" alt="Logo CN Carpinteria">
             </picture>
             <ul class="section flexRow">
                 <li class="sectionItem">
-                    <a class="sectionLink" href="">Inicio</a>
+                    <a class="sectionLink" href="/index.html">Inicio</a>
                 </li>
                 <li class="sectionItem">
-                    <a class="sectionLink" href="./assets/pages/productos.html">Productos</a>
+                    <a class="sectionLink" href="/assets/pages/productos.html">Productos</a>
                     <ul class="subMenu">
                         <li class="subMenuItem">
                             <a href="" class="subMenuLink">Cocina</a>
@@ -35,7 +33,7 @@
                             <a href="" class="subMenuLink">Patio</a>
                         </li>
                         <li class="subMenuItem">
-                            <a href="" class="subMenuLink">Dormitorio</a>
+                            <a href="" class="subMenuLink">Habitación</a>
                         </li>
                         <li class="subMenuItem">
                             <a href="" class="subMenuLink">Varios</a>
@@ -51,17 +49,23 @@
             </ul>
         </nav>
     </header>
-    <main class="usPage flexColumn">
+    <main class="mainPresu flexColumn usPage">
         <picture class="bgInicio">
-            <img class="bgImg"  src="./assets/img/Completo-blanco.png" alt="Fondo CN Carpinteria">
+            <img class="bgImg"  src="/assets/img/Completo-blanco.png" alt="Fondo CN Carpinteria">
         </picture>
-        <div class="homeCn">
-            <h1>CAPELETTI  NATALE</h1>
-        </div>
+        
+        <form action="" class="presuForm">
+            <h2>Pedi tu presupuesto sin cargo!</h2>
+            <input type="text" name="Nombre" id="" placeholder="Nombre">
+            <input type="text" name="Apellido" id="" placeholder="Apellido">
+            <input type="email" name="Email" id="" placeholder="E-Mail">
+            <input type="tel" name="tel" id="" placeholder="Celular">
+            <textarea name="mensaje" id="" cols="30" rows="10">Escriba aqui su consulta para presupuesto</textarea>
+            <input type="button" value="Enviar" id="presuBtn">
+        </form>
     </main>
     <footer class="flexRow">
         <p>Realizamos todo tipo de muebles a medida. Pedi tu cotización sin cargo.</p>
     </footer>
 </body>
-
 </html>
