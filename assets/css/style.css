@@ -238,6 +238,7 @@ footer {
     align-items: center;
     justify-content: center;
     background-color: var(--backcolor1);
+    color: var(--principal);
 }
 
 footer p {
