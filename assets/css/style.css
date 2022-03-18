@@ -245,6 +245,10 @@ footer p {
     font-size: 2em;
 }
 
+.sectionActive {
+    border-bottom: 2px solid grey;
+}
+
 /* Productos */
 
 .galleryProduct {
