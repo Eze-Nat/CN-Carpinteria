@@ -1,4 +1,269 @@
 /* VARIABLES */
+/*Variables*/
 /* GLOBALES */
+/*Imports*/
+@import url("https://fonts.googleapis.com/css2?family=Holtwood+One+SC&family=Montserrat:wght@300&family=Raleway:wght@300&display=swap");
+/* Normalize */
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; }
+
+/* Global */
+html {
+  scroll-behavior: smooth;
+  font-size: 62.5%;
+  color: #fff;
+  font-family: "Montserrat", sans-serif; }
+
+body {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+  background-color: #fff; }
+
+ul {
+  list-style-type: none; }
+
+a {
+  text-decoration: none;
+  display: inline-block;
+  color: #fff; }
+
+/* Helpers */
+.flexRow {
+  display: flex; }
+
+.flexColumn {
+  display: flex;
+  flex-direction: column; }
+
+.container {
+  max-width: 1080px;
+  margin: 0 auto; }
+
+.grid {
+  display: grid; }
+
+img {
+  width: 100%; }
+
+.sectionActive {
+  border-bottom: 2px solid grey; }
+
 /* PARTIALS */
+/*Navbar y Header*/
+Header {
+  background-color: rgba(0, 0, 0, 0.884); }
+  Header .navbar {
+    min-height: 5vh;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem; }
+  Header .logo {
+    flex-basis: 7%; }
+  Header .section {
+    flex-basis: 30%;
+    justify-content: space-between; }
+    Header .sectionItem {
+      font-size: 2em;
+      font-weight: bold; }
+      Header .sectionItem .subMenu {
+        display: none;
+        position: absolute; }
+        Header .sectionItem .subMenuLink {
+          padding: 1rem;
+          color: #fff;
+          transition: all .4s ease-in-out; }
+          Header .sectionItem .subMenuLink:hover {
+            background-color: #fff;
+            box-shadow: 0 0 10px #fff;
+            color: #000000; }
+      Header .sectionItem:hover .subMenu {
+        display: block;
+        z-index: 1; }
+    Header .sectionLink {
+      padding: 1rem;
+      font-size: 1em;
+      transition: all .4s ease-in-out; }
+      Header .sectionLink:hover {
+        background-color: #fff;
+        box-shadow: 0 0 10px #fff;
+        color: #000000; }
+
+/* FOOTER */
+footer {
+  height: 10vh;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.884); }
+  footer p {
+    text-align: center;
+    font-size: 2em; }
+
 /* VIEWS */
+/* Inicio */
+main {
+  background-color: #000000da;
+  padding-top: 2vh; }
+
+.usPage {
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  text-align: center; }
+
+.bgInicio {
+  flex-basis: 80%; }
+
+.bgImg {
+  width: 80vh;
+  height: 80vh;
+  opacity: 0.3;
+  display: block; }
+
+.homeCn {
+  color: #000000;
+  width: 100%;
+  align-items: center; }
+  .homeCn h1 {
+    font-size: 15em;
+    top: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    animation-name: efectocn;
+    animation-iteration-count: 5;
+    animation-timing-function: ease-in-out;
+    animation-duration: 2s;
+    animation-delay: 2s;
+    font-family: "Holtwood One SC", serif;
+    font-weight: lighter; }
+
+@keyframes efectocn {
+  0% {
+    opacity: 0; }
+  10% {
+    opacity: 0.2; }
+  20% {
+    opacity: 0.4; }
+  30% {
+    opacity: 0.6; }
+  40% {
+    opacity: 0.8; }
+  50% {
+    opacity: 1; }
+  60% {
+    opacity: 0.8; }
+  70% {
+    opacity: 0.6; }
+  80% {
+    opacity: 0.4; }
+  90% {
+    opacity: 0.2; }
+  100% {
+    opacity: 0; } }
+
+/* Productos */
+.galleryProduct {
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 40vh;
+  padding: 20px;
+  grid-gap: 10px; }
+
+.galleryImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; }
+
+.galleryTitle {
+  justify-self: center;
+  font-size: 3em; }
+
+.gallery .subMenu {
+  justify-content: space-around;
+  width: 100vw;
+  align-items: center;
+  margin-bottom: 10px; }
+  .gallery .subMenuItem {
+    justify-items: center;
+    font-size: 1.5em; }
+
+/*Presupuesto*/
+.presuForm {
+  width: 500px;
+  margin: auto;
+  top: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  color: #000000;
+  align-items: center;
+  opacity: 0.8; }
+  .presuForm h2 {
+    margin-bottom: 20px;
+    font-size: 3em;
+    color: #fff; }
+
+input textarea {
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 7px; }
+
+#presuBtn {
+  padding: 1rem;
+  color: #000000;
+  transition: all .4s ease-in-out; }
+  #presuBtn:hover {
+    background-color: #000000;
+    box-shadow: 0 0 10px #000000;
+    color: #fff; }
+
+/* Contact */
+.contactTitle {
+  text-align: center;
+  padding: 20px;
+  font-size: 3em; }
+
+.contactPage {
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  height: 80%;
+  width: 100%;
+  grid-template-areas: "a b b b e" "a c c c e" "a d d d e"; }
+
+.contactImg {
+  max-width: 20vh; }
+
+.contactLogo {
+  width: 50vh; }
+
+.img1 {
+  grid-area: a;
+  justify-self: center; }
+
+.img2 {
+  grid-area: b;
+  justify-self: center; }
+
+.img3 {
+  grid-area: c;
+  justify-self: center; }
+
+.img4 {
+  grid-area: d;
+  justify-self: center; }
+
+.img5 {
+  grid-area: e;
+  justify-self: center; }

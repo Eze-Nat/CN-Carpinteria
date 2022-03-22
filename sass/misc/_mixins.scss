@@ -1,0 +1,27 @@
+/* Helpers */
+.flexRow {
+    display: flex;
+}
+
+.flexColumn {
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    max-width: 1080px;
+    margin: 0 auto;
+}
+
+.grid {
+    display: grid;
+}
+
+
+img {
+    width: 100%;
+}
+
+.sectionActive {
+    border-bottom: 2px solid grey;
+}

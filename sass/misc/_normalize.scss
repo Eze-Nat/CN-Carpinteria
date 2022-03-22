@@ -1,0 +1,38 @@
+/*Imports*/
+
+@import url('https://fonts.googleapis.com/css2?family=Holtwood+One+SC&family=Montserrat:wght@300&family=Raleway:wght@300&display=swap');
+
+/* Normalize */
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Global */
+html {
+    scroll-behavior: smooth;
+    font-size: 62.5%;
+    color: $principal;
+    font-family: $font1
+}
+
+body {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    min-height: 100vh;
+    background-color: $principal;
+}
+
+ul {
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+    display: inline-block;
+    color: $principal;
+}
+

@@ -1,0 +1,62 @@
+/* Contact */
+
+.contact {
+    &Title {
+        text-align: center;
+        padding: 20px;
+        font-size: 3em;
+    }
+
+    &Page {
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+        grid-template-columns: repeat(5, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        height: 80%;
+        width: 100%;
+        grid-template-areas:
+            "a b b b e"
+            "a c c c e"
+            "a d d d e"
+        ;
+
+    }
+
+    &Img {
+        max-width: 20vh;
+    }
+
+    &Logo {
+        width: 50vh;
+    }
+
+}
+
+
+
+
+.img1 {
+    grid-area: a;
+    justify-self: center;
+}
+
+.img2 {
+    grid-area: b;
+    justify-self: center;
+}
+
+.img3 {
+    grid-area: c;
+    justify-self: center;
+}
+
+.img4 {
+    grid-area: d;
+    justify-self: center;
+}
+
+.img5 {
+    grid-area: e;
+    justify-self: center;
+}

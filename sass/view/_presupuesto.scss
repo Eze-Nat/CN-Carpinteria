@@ -1,0 +1,42 @@
+/*Presupuesto*/
+
+.presuForm {
+    width: 500px;
+    margin: auto;
+    top: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: $principal;
+    color: $secondary;
+    align-items: center;
+    opacity: 0.8;
+
+    h2 {
+        margin-bottom: 20px;
+        font-size: 3em;
+        color: $principal;
+    }
+}
+
+input {
+
+    textarea {
+        width: 100%;
+        margin-bottom: 20px;
+        padding: 7px;
+    }
+}
+
+#presuBtn {
+    padding: 1rem;
+    color: $secondary;
+    transition: all .4s ease-in-out;
+
+    &:hover {
+        background-color: $secondary;
+        box-shadow: 0 0 10px $secondary;
+        color: $principal;
+    }
+}
