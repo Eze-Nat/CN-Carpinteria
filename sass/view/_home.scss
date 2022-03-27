@@ -30,7 +30,7 @@ main {
     align-items: center;
 
     h1 {
-        font-size: 15em;
+        font-size: map-get($fs , Title );
         top: 0;
         position: absolute;
         top: 50%;

@@ -297,14 +297,14 @@ footer p {
     grid-template-rows: repeat(3, 1fr);
     height: 80%;
     width: 100%;
-   /*  grid-auto-rows: 100px; */
+    /*  grid-auto-rows: 100px; */
     grid-template-areas:
         "a b b b e"
         "a c c c e"
         "a d d d e"
-        ;
-       
-    }
+    ;
+
+}
 
 .img1 {
     grid-area: a;
@@ -325,6 +325,7 @@ footer p {
     grid-area: d;
     justify-self: center;
 }
+
 .img5 {
     grid-area: e;
     justify-self: center;
@@ -336,9 +337,10 @@ footer p {
     max-width: 20vh;
 
 }
+
 .contactLogo {
     width: 50vh;
-    
+
 }
 
 /*Presupuesto*/
@@ -356,7 +358,9 @@ footer p {
     align-items: center;
     opacity: 0.8;
 }
-input, textarea {
+
+input,
+textarea {
     width: 100%;
     margin-bottom: 20px;
     padding: 7px;
@@ -384,9 +388,11 @@ input, textarea {
     body {
         max-width: 100vw;
     }
+
     .navbar {
         max-width: 100vw;
     }
+
     .homeCn h1 {
         font-size: 7em;
         top: 0;
@@ -408,21 +414,25 @@ input, textarea {
         font-size: 2em;
         font-weight: bold;
     }
+
     .contactPage {
         max-width: 100%;
     }
+
     .contactPage .contactImg {
         max-width: 10vh;
-    
+
     }
+
     .contactLogo {
         width: 15vh;
-        
+
     }
-    .presuForm{
+
+    .presuForm {
         max-width: 80%;
     }
-    
+
     footer p {
         text-align: center;
         font-size: 1.5em;
@@ -433,13 +443,15 @@ input, textarea {
     body {
         max-width: 100vw;
     }
+
     .navbar {
         max-width: 100vw;
     }
+
     .galleryProduct {
         grid-template-columns: repeat(3, 1fr);
     }
-    
+
     .subMenu .subMenuItem {
         font-size: 1em;
     }
@@ -465,20 +477,22 @@ input, textarea {
         font-size: 1.2em;
         font-weight: bold;
     }
-    
+
     .contactPage {
         max-width: 100%;
     }
+
     .contactPage .contactImg {
         max-width: 10vh;
-    
+
     }
+
     .contactLogo {
         width: 15vh;
-        
+
     }
-    
-    .presuForm{
+
+    .presuForm {
         max-width: 80%;
     }
 
@@ -491,14 +505,15 @@ input, textarea {
 
 
 @media (max-width: 480px) {
-    
+
     body {
         max-width: 100vw;
     }
+
     .navbar {
         max-width: 100vw;
     }
-    
+
     .bgImg {
         width: 120vw;
         height: 80vh;
@@ -527,33 +542,39 @@ input, textarea {
     .section {
         max-width: 100%;
     }
+
     .section .sectionItem {
         font-size: 1.2em;
-        
+
     }
 
     .galleryProduct {
         grid-template-columns: repeat(1, 1fr);
     }
-    
+
     .subMenu .subMenuItem {
         font-size: 1em;
     }
+
     .contact {
         width: 100%;
     }
+
     .contactPage {
         max-width: 100%;
     }
+
     .contactPage .contactImg {
         max-width: 10vh;
-    
+
     }
+
     .contactLogo {
         width: 15vh;
-        
+
     }
-    .presuForm{
+
+    .presuForm {
         max-width: 80%;
     }
 

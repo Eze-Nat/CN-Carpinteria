@@ -16,7 +16,7 @@
 
     &Title {
         justify-self: center;
-        font-size: 3em;
+        font-size: map-get($fs , Large );
     }
 
     .subMenu {
@@ -27,7 +27,7 @@
 
         &Item {
             justify-items: center;
-            font-size: 1.5em;
+            font-size: map-get($fs , Medium );
         }
     }
 }

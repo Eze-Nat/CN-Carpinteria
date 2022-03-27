@@ -6,3 +6,16 @@ $backcolor1: rgba(0, 0, 0, 0.884);
 $font1: 'Montserrat', sans-serif;
 $font2: 'Holtwood One SC', serif;
 
+$fs: (
+    Title: 15em,
+    Xlarge: 5em,
+    Large: 3em,
+    Medium: 1.5em,
+    Small: 1em
+);
+
+@each $var, $val in $fs {
+    .fs #{$var}{
+        font-size: #{$val}
+    }    
+}
