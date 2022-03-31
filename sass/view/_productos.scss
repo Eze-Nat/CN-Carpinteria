@@ -2,11 +2,10 @@
 
 .gallery {
     &Product {
-        grid-template-columns: repeat(3, 1fr);
+        @include grid(3, 1fr, null, 40vh, 10px);
         grid-auto-rows: 40vh;
         padding: 20px;
-        grid-gap: 10px;
-    }
+    } 
 
     &Img {
         width: 100%;
@@ -17,13 +16,14 @@
     &Title {
         justify-self: center;
         font-size: map-get($fs , Large );
+        text-align: center;
     }
 
     .subMenu {
-        justify-content: space-around;
+        @include flex(row, space-around, center, 0);
         width: 100vw;
-        align-items: center;
         margin-bottom: 10px;
+        
 
         &Item {
             justify-items: center;

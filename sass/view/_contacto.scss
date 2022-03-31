@@ -8,11 +8,12 @@
     }
 
     &Page {
+        @include grid(5, 1fr, 3, 1fr, 20px);
         align-items: center;
         justify-content: center;
-        gap: 20px;
+/*         gap: 20px;
         grid-template-columns: repeat(5, 1fr);
-        grid-template-rows: repeat(3, 1fr);
+        grid-template-rows: repeat(3, 1fr); */
         height: 80%;
         width: 100%;
         grid-template-areas:

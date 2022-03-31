@@ -1,13 +1,12 @@
 /* FOOTER */
 
 footer {
-    height: 10vh;
-    align-items: center;
-    justify-content: center;
+    @include flex(column, center, center, 0);
+    height: 7vh;
     background-color: $backcolor1;
     p {
         text-align: center;
-        font-size: 2em;
+        font-size: 1.5em;
     }
 }
 
