@@ -15,7 +15,7 @@
     grid-gap: $gap;
 }
 .container {
-    max-width: 1080px;
+    max-width: 1080px !important;
     margin: 0 auto;
 }
 
@@ -29,5 +29,5 @@ img {
 }
 
 .sectionActive {
-    border-bottom: 2px solid grey;
+    border-bottom: 2px solid grey !important;
 }
