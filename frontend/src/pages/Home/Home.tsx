@@ -1,15 +1,40 @@
-import { useState } from "react"
-import Hero from "../../components/Hero/Hero"
-import CategoryCard from "../../components/CategoryCard/CategoryCard"
-import type { Category } from "../../types/Category"
-import { getStoredCategories } from "../../utils/categoryStorage"
+import { useEffect, useState } from "react";
+import Hero from "../../components/Hero/Hero";
+import CategoryCard from "../../components/CategoryCard/CategoryCard";
+import { fetchCategories } from "../../services/categoryService";
+import type { CategoryDto } from "../../services/categoryService";
+
 
 function Home() {
-const [categories] = useState<Category[]>(() => {
-  return getStoredCategories()
-})
+  const [categories, setCategories] = useState<CategoryDto[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
+  useEffect(() => {
+    async function loadCategories() {
+      try {
+        const data = await fetchCategories();
+        setCategories(data);
+      } catch (err) {
+        console.error(err);
+        setError("No se pudieron cargar las categorías");
+      } finally {
+        setLoading(false);
+      }
+    }
 
+    loadCategories();
+  }, []);
+
+  if (loading)
+    return <p className="text-center mt-20">Cargando categorías...</p>;
+
+  if (error)
+    return (
+      <p className="text-center mt-20 text-red-500">
+        {error}
+      </p>
+    );
 
   return (
     <>
@@ -39,7 +64,7 @@ const [categories] = useState<Category[]>(() => {
         </div>
       </section>
     </>
-  )
+  );
 }
 
-export default Home
+export default Home;

@@ -1,41 +1,40 @@
-import { useEffect, useState } from "react"
-import type { Category } from "../../types/Category"
+import { useEffect, useState } from "react";
+import { fetchCategories, createCategory } from "../../services/categoryService";
+import type { CategoryDto } from "../../services/categoryService";
 
 function AdminCategories() {
-const [categories, setCategories] = useState<Category[]>(() => {
-  const stored = localStorage.getItem("categories")
-  return stored ? JSON.parse(stored) : []
-})
-  const [newCategoryName, setNewCategoryName] = useState("")
-
-
+  const [categories, setCategories] = useState<CategoryDto[]>([]);
+  const [newCategoryName, setNewCategoryName] = useState("");
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    localStorage.setItem("categories", JSON.stringify(categories))
-  }, [categories])
-  function generateSlug(name: string) {
-    return name
-      .toLowerCase()
-      .replace(/\s+/g, "-")
-      .replace(/[^\w-]+/g, "")
-  }
+    loadCategories();
+  }, []);
 
-  function handleAddCategory() {
-    if (!newCategoryName.trim()) return
-
-    const newCategory: Category = {
-      id: Date.now(),
-      name: newCategoryName,
-      slug: generateSlug(newCategoryName),
+  async function loadCategories() {
+    try {
+      const data = await fetchCategories();
+      setCategories(data);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoading(false);
     }
-
-    setCategories([...categories, newCategory])
-    setNewCategoryName("")
   }
 
-  function handleDelete(id: number) {
-    setCategories(categories.filter((cat) => cat.id !== id))
+  async function handleAddCategory() {
+    if (!newCategoryName.trim()) return;
+
+    try {
+      await createCategory(newCategoryName);
+      setNewCategoryName("");
+      await loadCategories();
+    } catch (error) {
+      console.error(error);
+    }
   }
+
+  if (loading) return <p>Cargando...</p>;
 
   return (
     <div>
@@ -43,7 +42,6 @@ const [categories, setCategories] = useState<Category[]>(() => {
         Gestión de Categorías
       </h1>
 
-      {/* Formulario */}
       <div className="bg-neutral-800 p-6 rounded-lg mb-8">
         <h2 className="text-xl font-semibold mb-4">
           Nueva Categoría
@@ -55,19 +53,18 @@ const [categories, setCategories] = useState<Category[]>(() => {
             placeholder="Nombre de la categoría"
             value={newCategoryName}
             onChange={(e) => setNewCategoryName(e.target.value)}
-            className="flex-1 px-4 py-2 rounded bg-neutral-700 border border-neutral-600 focus:outline-none focus:border-white"
+            className="flex-1 px-4 py-2 rounded bg-neutral-700 border border-neutral-600"
           />
 
           <button
             onClick={handleAddCategory}
-            className="bg-white text-black px-6 py-2 rounded font-medium hover:opacity-90 transition"
+            className="bg-white text-black px-6 py-2 rounded"
           >
             Crear
           </button>
         </div>
       </div>
 
-      {/* Lista */}
       <div className="bg-neutral-800 p-6 rounded-lg">
         <h2 className="text-xl font-semibold mb-4">
           Categorías existentes
@@ -85,19 +82,12 @@ const [categories, setCategories] = useState<Category[]>(() => {
                   /categoria/{cat.slug}
                 </p>
               </div>
-
-              <button
-                onClick={() => handleDelete(cat.id)}
-                className="text-red-400 hover:text-red-300 transition"
-              >
-                Eliminar
-              </button>
             </li>
           ))}
         </ul>
       </div>
     </div>
-  )
+  );
 }
 
-export default AdminCategories
+export default AdminCategories;
