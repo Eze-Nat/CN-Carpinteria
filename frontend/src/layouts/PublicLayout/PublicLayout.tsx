@@ -1,21 +1,38 @@
-import { ReactNode } from "react"
+
+
 import Navbar from "../../components/Navbar/Navbar"
 import Footer from "../../components/Footer/Footer"
-import WhatsAppButton from "../../components/WhatsAppButton/WhatsAppButton";
+import WhatsAppButton from "../../components/WhatsAppButton/WhatsAppButton"
 
-interface PublicLayoutProps {
-  children: ReactNode
-}
-
-function PublicLayout({ children }: PublicLayoutProps) {
+function PublicLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="bg-neutral-950 text-neutral-100 min-h-screen flex flex-col">
+    <div className="relative min-h-screen flex flex-col">
+
+      {/* Fondo blurreado */}
+<div className="fixed inset-0 -z-10">
+  <img
+    src="/images/localjugueteria1.jpg"
+    alt="background"
+    className="w-full h-full object-cover brightness-40"
+  />
+</div>
+
+
+      {/* Navbar */}
       <Navbar />
+
+      {/* Contenido */}
       <main className="flex-1">
         {children}
+        
       </main>
+
+      {/* Footer */}
       <Footer />
+
+      {/* WhatsApp */}
       <WhatsAppButton />
+
     </div>
   )
 }

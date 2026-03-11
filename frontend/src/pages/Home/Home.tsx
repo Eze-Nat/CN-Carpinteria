@@ -3,6 +3,7 @@ import Hero from "../../components/Hero/Hero";
 import CategoryCard from "../../components/CategoryCard/CategoryCard";
 import { fetchCategories } from "../../services/categoryService";
 import type { CategoryDto } from "../../services/categoryService";
+import StandardFurniture from "../../components/StandardFurniture/StandardFurniture"
 
 
 function Home() {
@@ -40,7 +41,9 @@ function Home() {
     <>
       <Hero />
 
-      <section id="gallery" className="py-24 bg-neutral-950">
+      <StandardFurniture />
+      
+      <section id="gallery" className="py-24">
         <div className="max-w-6xl mx-auto px-6">
           <h2 className="text-3xl font-bold text-center mb-16">
             Nuestros trabajos

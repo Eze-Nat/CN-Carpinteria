@@ -19,7 +19,7 @@ function CategoryPage() {
 
   return (
     <>
-      <section className="py-24 bg-neutral-950 min-h-screen">
+      <section className="py-24 min-h-screen">
         <div className="max-w-6xl mx-auto px-6">
           <h2 className="text-3xl font-bold mb-12 capitalize">
             {slug}

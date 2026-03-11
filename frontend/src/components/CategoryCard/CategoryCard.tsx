@@ -11,7 +11,7 @@ function CategoryCard({ title, slug }: CategoryCardProps) {
       <div className="relative group h-64 md:h-80 rounded-xl overflow-hidden cursor-pointer">
         
         {/* Fondo */}
-        <div className="absolute inset-0 bg-neutral-800 group-hover:scale-110 transition-transform duration-500" />
+        <div className="absolute inset-0 group-hover:scale-110 transition-transform duration-500" />
 
         {/* Overlay */}
         <div className="absolute inset-0 bg-black/60 group-hover:bg-black/40 transition" />

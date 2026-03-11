@@ -17,7 +17,14 @@ export default {
   animation: {
     fadeIn: "fadeIn 0.3s ease-out",
     scaleIn: "scaleIn 0.3s ease-out",
-  },},
+  },
+    colors: {
+      wood: "#b68a5a",
+      woodLight: "#d9b382",
+      woodBg: "#f4efe9",
+      woodSoft: "#e7ded3",
+    }
+    },
   },
   plugins: [],
 }
