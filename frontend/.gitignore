@@ -23,3 +23,19 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# .NET
+bin/
+obj/
+
+# Node
+node_modules/
+dist/
+
+# Environment
+appsettings.Development.json
+.env
+
+# OS
+.DS_Store
+Thumbs.db
