@@ -1,36 +1,91 @@
+import { Routes, Route } from "react-router-dom";
+
+/* Layouts */
+import PublicLayout from "./layouts/PublicLayout/PublicLayout";
+import AdminLayout from "./layouts/AdminLayout/AdminLayout";
+
+/* Route Guard */
+import ProtectedRoute from "./routes/ProtectedRoute";
+
+/* Public Pages */
+import Home from "./pages/Home/Home";
+import CategoryPage from "./pages/Category/CategoryPage";
+
+/* Admin Pages */
+import AdminLogin from "./pages/Admin/AdminLogin";
+import AdminDashboard from "./pages/Admin/AdminDashboard";
+import AdminCategories from "./pages/Admin/AdminCategories";
+import AdminImages from "./pages/Admin/AdminImages";
+import Maintenance from "./components/Maintenance/Maintenance";
+
+
+
 function App() {
+
+  const maintenance = import.meta.env.VITE_MAINTENANCE === "true";
+
+  if (maintenance) {
+    return <Maintenance />;
+  } 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-neutral-950 text-white px-6">
-      
-      <div className="text-center max-w-xl">
-        
-        <h1 className="text-4xl md:text-5xl font-bold mb-6">
-          CN Carpintería
-        </h1>
+    <Routes>
+      {/* Public */}
+      <Route
+        path="/"
+        element={
+          <PublicLayout>
+            <Home />
+          </PublicLayout>
+        }
+      />
 
-        <p className="text-neutral-300 text-lg mb-4">
-          Estamos renovando nuestra página web.
-        </p>
+      <Route
+        path="/categoria/:slug"
+        element={
+          <PublicLayout>
+            <CategoryPage />
+          </PublicLayout>
+        }
+      />
 
-        <p className="text-neutral-400">
-          Muy pronto podrás ver todos nuestros trabajos y proyectos.
-        </p>
+      {/* Admin Login */}
+      <Route path="/admin/login" element={<AdminLogin />} />
 
-        <p className="mt-8 text-neutral-500">
-          Para consultas podés escribirnos por WhatsApp.
-        </p>
+      {/* Protected Admin Routes */}
+      <Route
+        path="/admin"
+        element={
+          <ProtectedRoute>
+            <AdminLayout>
+              <AdminDashboard />
+            </AdminLayout>
+          </ProtectedRoute>
+        }
+      />
 
-        <a
-          href="https://wa.me/5493416878831"
-          className="inline-block mt-6 bg-white text-black px-6 py-3 rounded-md font-medium"
-        >
-          Contactar por WhatsApp
-        </a>
+      <Route
+        path="/admin/categorias"
+        element={
+          <ProtectedRoute>
+            <AdminLayout>
+              <AdminCategories />
+            </AdminLayout>
+          </ProtectedRoute>
+        }
+      />
 
-      </div>
-
-    </div>
-  )
+      <Route
+        path="/admin/imagenes"
+        element={
+          <ProtectedRoute>
+            <AdminLayout>
+              <AdminImages />
+            </AdminLayout>
+          </ProtectedRoute>
+        }
+      />
+    </Routes>
+  );
 }
 
-export default App
+export default App;
