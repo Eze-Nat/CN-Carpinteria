@@ -9,7 +9,7 @@ function PublicLayout({ children }: { children: React.ReactNode }) {
     <div className="relative min-h-screen flex flex-col">
 
       {/* Fondo blurreado */}
-<div className="fixed inset-0 -z-10">
+<div className="fixed inset-0 -z-10 opacity-90">
   <img
     src="/images/localjugueteria1.jpg"
     alt="background"

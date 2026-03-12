@@ -15,9 +15,14 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowFrontend",
         policy =>
         {
-            policy.WithOrigins("http://localhost:5173","https://cncarpinteria.netlify.app")
-                  .AllowAnyHeader()
-                  .AllowAnyMethod();
+            policy.WithOrigins(
+                "http://localhost:5173",
+                "https://cncarpinteria.netlify.app", 
+                "https://cncarpinteria.com.ar",
+                "https://www.cncarpinteria.com.ar"
+                )
+                .AllowAnyHeader()
+                .AllowAnyMethod();
         });
 });
 
