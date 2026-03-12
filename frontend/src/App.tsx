@@ -16,8 +16,17 @@ import AdminLogin from "./pages/Admin/AdminLogin";
 import AdminDashboard from "./pages/Admin/AdminDashboard";
 import AdminCategories from "./pages/Admin/AdminCategories";
 import AdminImages from "./pages/Admin/AdminImages";
+import Maintenance from "./components/Maintenance/Maintenance";
+
+
 
 function App() {
+
+  const maintenance = import.meta.env.VITE_MAINTENANCE === "true";
+
+  if (maintenance) {
+    return <Maintenance />;
+  } 
   return (
     <Routes>
       {/* Public */}
