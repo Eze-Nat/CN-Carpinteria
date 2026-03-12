@@ -1,4 +1,3 @@
-import completoBlanco from "../../assets/images/Completo-blanco.png"
 
 function Hero() {
   return (

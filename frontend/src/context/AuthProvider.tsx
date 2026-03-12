@@ -1,5 +1,6 @@
 import { useState, ReactNode } from "react";
 import { AuthContext } from "./auth-context";
+import type { ReactNode } from "react"
 
 const ADMIN_PASSWORD = "1234";
 
