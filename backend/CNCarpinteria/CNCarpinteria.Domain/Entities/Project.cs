@@ -13,10 +13,10 @@ namespace CNCarpinteria.Domain.Entities
 
         public Guid CategoryId { get; set; }
 
-        public Category Category { get; set; }
+        public Category? Category { get; set; }
 
         public string CoverImageUrl { get; set; }
 
-        public ICollection<Image> Images { get; set; }
+        public ICollection<Image>? Images { get; set; }
     }
 }
