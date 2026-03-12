@@ -17,6 +17,8 @@ public class AppDbContext : DbContext
 
     public DbSet<Category> Categories => Set<Category>();
     public DbSet<Image> Images { get; set; }
+    public DbSet<Project> Projects { get; set; }
+    
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
