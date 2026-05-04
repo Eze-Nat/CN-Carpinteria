@@ -22,6 +22,30 @@ namespace CNCarpinteria.Infrastructure.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
+            modelBuilder.Entity("CNCarpinteria.Domain.Entities.CarouselImage", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("ImageUrl")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("boolean");
+
+                    b.Property<int>("Order")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("CarouselImages");
+                });
+
             modelBuilder.Entity("CNCarpinteria.Domain.Entities.Category", b =>
                 {
                     b.Property<Guid>("Id")
@@ -55,9 +79,6 @@ namespace CNCarpinteria.Infrastructure.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("text");
 
-                    b.Property<Guid?>("ProjectId")
-                        .HasColumnType("uuid");
-
                     b.Property<string>("Url")
                         .IsRequired()
                         .HasColumnType("text");
@@ -65,8 +86,6 @@ namespace CNCarpinteria.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("CategoryId");
-
-                    b.HasIndex("ProjectId");
 
                     b.ToTable("Images");
                 });
@@ -84,19 +103,73 @@ namespace CNCarpinteria.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("timestamp with time zone");
+
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasMaxLength(1000)
+                        .HasColumnType("character varying(1000)");
 
-                    b.Property<string>("Title")
+                    b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasMaxLength(200)
+                        .HasColumnType("character varying(200)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("CategoryId");
 
                     b.ToTable("Projects");
+                });
+
+            modelBuilder.Entity("CNCarpinteria.Domain.Entities.ProjectImage", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("ImageUrl")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<int>("Order")
+                        .HasColumnType("integer");
+
+                    b.Property<Guid>("ProjectId")
+                        .HasColumnType("uuid");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProjectId");
+
+                    b.ToTable("ProjectImages");
+                });
+
+            modelBuilder.Entity("CNCarpinteria.Domain.Entities.Reel", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("ThumbnailUrl")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("character varying(200)");
+
+                    b.Property<string>("VideoUrl")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Reels");
                 });
 
             modelBuilder.Entity("CNCarpinteria.Domain.Entities.Image", b =>
@@ -107,10 +180,6 @@ namespace CNCarpinteria.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("CNCarpinteria.Domain.Entities.Project", null)
-                        .WithMany("Images")
-                        .HasForeignKey("ProjectId");
-
                     b.Navigation("Category");
                 });
 
@@ -125,9 +194,20 @@ namespace CNCarpinteria.Infrastructure.Migrations
                     b.Navigation("Category");
                 });
 
+            modelBuilder.Entity("CNCarpinteria.Domain.Entities.ProjectImage", b =>
+                {
+                    b.HasOne("CNCarpinteria.Domain.Entities.Project", "Project")
+                        .WithMany("ProjectImages")
+                        .HasForeignKey("ProjectId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Project");
+                });
+
             modelBuilder.Entity("CNCarpinteria.Domain.Entities.Project", b =>
                 {
-                    b.Navigation("Images");
+                    b.Navigation("ProjectImages");
                 });
 #pragma warning restore 612, 618
         }

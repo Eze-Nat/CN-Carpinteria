@@ -1,73 +1,89 @@
-import { useEffect, useState } from "react";
-import Hero from "../../components/Hero/Hero";
-import CategoryCard from "../../components/CategoryCard/CategoryCard";
-import { fetchCategories } from "../../services/categoryService";
-import type { CategoryDto } from "../../services/categoryService";
-import StandardFurniture from "../../components/StandardFurniture/StandardFurniture"
-
+import { useEffect, useState } from "react"
+import Hero from "../../components/Hero/Hero"
+import StandardBanner from "../../components/StandardBanner/StandardBanner"
+import CategoryCard from "../../components/CategoryCard/CategoryCard"
+import AboutSection from "../../components/AboutSection/AboutSection"
+import ReelsSection from "../../components/ReelsSection/ReelsSection"
+import { fetchCategories } from "../../services/categoryService"
+import type { CategoryDto } from "../../services/categoryService"
+import { fetchProjects } from "../../services/projectService"
+import type { ProjectDto } from "../../services/projectService"
 
 function Home() {
-  const [categories, setCategories] = useState<CategoryDto[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const [categories, setCategories] = useState<CategoryDto[]>([])
+  const [projects, setProjects] = useState<ProjectDto[]>([])
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    async function loadCategories() {
+    async function load() {
       try {
-        const data = await fetchCategories();
-        setCategories(data);
+        const [cats, projs] = await Promise.all([fetchCategories(), fetchProjects()])
+        setCategories(cats)
+        setProjects(projs)
       } catch (err) {
-        console.error(err);
-        setError("No se pudieron cargar las categorías");
+        console.error("Error cargando datos:", err)
       } finally {
-        setLoading(false);
+        setLoading(false)
       }
     }
+    load()
+  }, [])
 
-    loadCategories();
-  }, []);
-
-  if (loading)
-    return <p className="text-center mt-20">Cargando categorías...</p>;
-
-  if (error)
-    return (
-      <p className="text-center mt-20 text-red-500">
-        {error}
-      </p>
-    );
+  function getCoverImage(categoryId: string): string | undefined {
+    return projects.find((p) => p.categoryId === categoryId)?.coverImageUrl
+  }
 
   return (
     <>
       <Hero />
 
-      <StandardFurniture />
-      
-      <section id="gallery" className="py-24">
-        <div className="max-w-6xl mx-auto px-6">
-          <h2 className="text-3xl font-bold text-center mb-16">
-            Nuestros trabajos
-          </h2>
+      <StandardBanner />
 
-          {categories.length === 0 ? (
-            <p className="text-center text-neutral-500">
+      {/* Categorías */}
+      <section id="categorias" className="py-24 md:py-36 bg-cream">
+        <div className="max-w-7xl mx-auto px-6">
+
+          <div className="text-center mb-16">
+            <p className="text-gold tracking-[0.35em] text-xs uppercase mb-4 font-medium">
+              Nuestro trabajo
+            </p>
+            <h2 className="font-serif text-4xl md:text-5xl font-medium text-brown">
+              Cada pieza, única
+            </h2>
+            <div className="w-10 h-px bg-gold mx-auto mt-6" />
+          </div>
+
+          {loading ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+              {[...Array(3)].map((_, i) => (
+                <div key={i} className="aspect-[4/3] bg-woodSoft animate-pulse rounded-sm" />
+              ))}
+            </div>
+          ) : categories.length === 0 ? (
+            <p className="text-center text-brown-light/50 py-12">
               Aún no hay categorías creadas.
             </p>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {categories.map((category) => (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+              {categories.map((cat, i) => (
                 <CategoryCard
-                  key={category.id}
-                  title={category.name}
-                  slug={category.slug}
+                  key={cat.id}
+                  title={cat.name}
+                  slug={cat.slug}
+                  coverImage={getCoverImage(cat.id)}
+                  index={i}
                 />
               ))}
             </div>
           )}
         </div>
       </section>
+
+      <AboutSection />
+
+      <ReelsSection />
     </>
-  );
+  )
 }
 
-export default Home;
+export default Home
