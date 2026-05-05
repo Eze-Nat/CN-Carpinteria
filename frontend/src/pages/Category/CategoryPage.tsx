@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { useParams, Link } from "react-router-dom"
 import { fetchCategories } from "../../services/categoryService"
+import type { CategoryDto } from "../../services/categoryService"
 import { fetchProjectsBySlug, fetchProjectById } from "../../services/projectService"
 import type { ProjectDto, ProjectDetailDto } from "../../services/projectService"
 
@@ -21,7 +22,7 @@ function CategoryPage() {
           fetchCategories(),
           fetchProjectsBySlug(slug),
         ])
-        const cat = cats.find((c) => c.slug === slug)
+        const cat = cats.find((c: CategoryDto) => c.slug === slug)
         if (cat) setCategoryName(cat.name)
         setProjects(projs)
       } catch (err) {
