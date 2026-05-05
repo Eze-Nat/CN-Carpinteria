@@ -3,26 +3,49 @@ import { Link } from "react-router-dom"
 interface CategoryCardProps {
   title: string
   slug: string
+  coverImage?: string
+  index?: number
 }
 
-function CategoryCard({ title, slug }: CategoryCardProps) {
+const fallbackGradients = [
+  "linear-gradient(145deg, #1A0E0A 0%, #2C1810 100%)",
+  "linear-gradient(145deg, #2C1810 0%, #4A2E22 100%)",
+  "linear-gradient(145deg, #3D2218 0%, #2C1810 100%)",
+  "linear-gradient(145deg, #1A0E0A 0%, #3D2218 100%)",
+]
+
+function CategoryCard({ title, slug, coverImage, index = 0 }: CategoryCardProps) {
   return (
-    <Link to={`/categoria/${slug}`}>
-      <div className="relative group h-64 md:h-80 rounded-xl overflow-hidden cursor-pointer">
-        
-        {/* Fondo */}
-        <div className="absolute inset-0 group-hover:scale-110 transition-transform duration-500" />
+    <Link to={`/categoria/${slug}`} className="group block relative overflow-hidden aspect-[4/3]">
+      {/* Background */}
+      {coverImage ? (
+        <img
+          src={coverImage}
+          alt={title}
+          className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+        />
+      ) : (
+        <div
+          className="absolute inset-0"
+          style={{ background: fallbackGradients[index % fallbackGradients.length] }}
+        />
+      )}
 
-        {/* Overlay */}
-        <div className="absolute inset-0 bg-black/60 group-hover:bg-black/40 transition" />
+      {/* Gradient overlay — bottom shadow */}
+      <div className="absolute inset-0 bg-gradient-to-t from-brown-dark/90 via-brown-dark/20 to-transparent" />
 
-        {/* Texto */}
-        <div className="relative z-10 h-full flex items-center justify-center">
-          <h3 className="text-2xl md:text-3xl font-semibold tracking-wide">
-            {title}
-          </h3>
-        </div>
+      {/* Gold border on hover */}
+      <div className="absolute inset-0 border border-transparent group-hover:border-gold/60 transition-all duration-500" />
 
+      {/* Content */}
+      <div className="absolute bottom-0 left-0 right-0 p-6">
+        <div className="w-6 h-px bg-gold mb-3 group-hover:w-14 transition-all duration-500" />
+        <h3 className="font-serif text-xl md:text-2xl text-white font-medium tracking-wide leading-snug">
+          {title}
+        </h3>
+        <p className="text-gold text-xs tracking-[0.2em] uppercase mt-2.5 translate-y-2 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-400 font-medium">
+          Ver galería →
+        </p>
       </div>
     </Link>
   )

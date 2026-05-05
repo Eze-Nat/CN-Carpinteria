@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(dotnet add *)",
+      "Bash(dotnet build *)",
+      "Bash(npx tsc *)",
+      "Bash(dotnet ef *)",
+      "PowerShell(Stop-Process *)",
+      "Bash(Stop-Process -Id 22628 -Force)",
+      "Bash(Start-Sleep -Seconds 1)"
+    ]
+  }
+}

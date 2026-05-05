@@ -1,14 +1,16 @@
+using CNCarpinteria.Application.Services;
 using CNCarpinteria.Infrastructure.Persistence;
-using Microsoft.EntityFrameworkCore;
-using CNCarpinteria.Domain.Repositories;
 using CNCarpinteria.Infrastructure.Repositories;
+using CNCarpinteria.Infrastructure.Services;
+using CNCarpinteria.Domain.Repositories;
+using Microsoft.AspNetCore.Http.Features;
+using Microsoft.EntityFrameworkCore;
+
+DotNetEnv.Env.Load();
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Connection string
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-
-// Add services to the container
 
 builder.Services.AddCors(options =>
 {
@@ -17,13 +19,19 @@ builder.Services.AddCors(options =>
         {
             policy.WithOrigins(
                 "http://localhost:5173",
-                "https://cncarpinteria.netlify.app", 
+                "https://cncarpinteria.netlify.app",
                 "https://cncarpinteria.com.ar",
                 "https://www.cncarpinteria.com.ar"
                 )
                 .AllowAnyHeader()
                 .AllowAnyMethod();
         });
+});
+
+// Allow large multipart uploads (for video files)
+builder.Services.Configure<FormOptions>(o =>
+{
+    o.MultipartBodyLengthLimit = 500_000_000; // 500 MB
 });
 
 builder.Services.AddControllers();
@@ -36,10 +44,14 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 builder.Services.AddScoped<IImageRepository, ImageRepository>();
+builder.Services.AddScoped<IProjectRepository, ProjectRepository>();
+builder.Services.AddScoped<IProjectImageRepository, ProjectImageRepository>();
+builder.Services.AddScoped<IReelRepository, ReelRepository>();
+builder.Services.AddScoped<ICarouselRepository, CarouselRepository>();
+builder.Services.AddScoped<ICloudinaryService, CloudinaryService>();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -55,4 +67,3 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
-

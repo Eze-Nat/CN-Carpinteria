@@ -19,15 +19,14 @@ export async function fetchCategories() {
 export async function createCategory(name: string): Promise<CategoryDto> {
   const response = await fetch(`${API_URL}/categories`, {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ name }),
   })
-
-  if (!response.ok) {
-    throw new Error("Error al crear categoría")
-  }
-
+  if (!response.ok) throw new Error("Error al crear categoría")
   return response.json()
+}
+
+export async function deleteCategory(id: string): Promise<void> {
+  const response = await fetch(`${API_URL}/categories/${id}`, { method: "DELETE" })
+  if (!response.ok) throw new Error("Error al eliminar categoría")
 }
